@@ -21,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('product-category', [ProductCategoryController::class, 'index']);
 Route::post('product-category', [ProductCategoryController::class, 'store']);
+Route::put('product-category/{id}', [ProductCategoryController::class, 'update']);
+Route::delete('product-category/{id}', [ProductCategoryController::class, 'destroy']);
