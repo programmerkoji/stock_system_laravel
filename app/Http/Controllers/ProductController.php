@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Repositories\ProductRepository;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -26,18 +27,18 @@ class ProductController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ProductRequest $request
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         return $this->productRepository->store($request->toArray());
     }
 
     /**
-     * @param Request $request
+     * @param ProductRequest $request
      * @param int $id
      */
-    public function update(Request $request, int $id)
+    public function update(ProductRequest $request, int $id)
     {
         return $this->productRepository->update($request->toArray(), $id);
     }
