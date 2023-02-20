@@ -21,8 +21,16 @@ class Product extends Model
     /**
      * @return BelongsTo
      */
-    public function product_category(): BlongsTo
+    public function product_category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);
+    }
+
+    /**
+     *  @return HasMany
+     */
+    public function stock(): HasMany
+    {
+        return $this->hasMany(Stock::class);
     }
 }
