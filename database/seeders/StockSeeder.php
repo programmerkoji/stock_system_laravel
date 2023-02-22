@@ -22,7 +22,6 @@ class StockSeeder extends Seeder
                 'shipping_date' => "2022-12-01",
                 'condition' => 3,
                 'serial_number' => 'SS-0003',
-                'total' => 2,
                 'note' => '備考のメモメモメモメモ',
             ],
             [
@@ -31,7 +30,6 @@ class StockSeeder extends Seeder
                 'shipping_date' => "2022-11-25",
                 'condition' => 2,
                 'serial_number' => 'SS-0004',
-                'total' => 1,
                 'note' => '備考のメモメモメモメモ',
             ],
             [
@@ -40,7 +38,6 @@ class StockSeeder extends Seeder
                 'shipping_date' => "2022-12-07",
                 'condition' => 4,
                 'serial_number' => 'SS-0005',
-                'total' => 1,
                 'note' => '備考のメモメモメモメモ',
             ],
             [
@@ -49,7 +46,6 @@ class StockSeeder extends Seeder
                 'shipping_date' => "2022-12-07",
                 'condition' => 1,
                 'serial_number' => 'SS-0006',
-                'total' => 1,
                 'note' => '備考のメモメモメモメモ',
             ],
         ]);

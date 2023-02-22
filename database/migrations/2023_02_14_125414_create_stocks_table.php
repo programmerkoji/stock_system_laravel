@@ -23,7 +23,6 @@ return new class extends Migration
             $table->date('shipping_date')->nullable()->comment('出荷日');
             $table->integer('condition')->comment('状態');
             $table->string('serial_number')->nullable('シリアルナンバー');
-            $table->integer('total')->nullable('個数');
             $table->text('note')->nullable('備考');
             $table->timestamps();
         });
