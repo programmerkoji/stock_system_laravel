@@ -2,22 +2,22 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\ProductCategory;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 
-class ProductCategoryRepository
+class ProductRepository
 {
     /**
-     * @var ProductCategory
+     * @var Product
      */
-    protected $productCategory;
+    protected $product;
 
     /**
-     * @param ProductCategory
+     * @param Product
      */
-    public function __construct(ProductCategory $productCategory)
+    public function __construct(Product $product)
     {
-        $this->productCategory = $productCategory;
+        $this->product = $product;
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductCategoryRepository
      */
     public function index()
     {
-        return $this->productCategory->get();
+        return $this->product->get();
     }
 
     /**
@@ -34,10 +34,10 @@ class ProductCategoryRepository
      */
     public function store(array $data)
     {
-        $productCategory = new ProductCategory;
+        $product = new Product;
         try {
             DB::beginTransaction();
-            $productCategory->fill($data)->save();
+            $product->fill($data)->save();
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -49,7 +49,7 @@ class ProductCategoryRepository
      */
     public function findById(int $id)
     {
-        return $this->productCategory->find($id);
+        return $this->product->find($id);
     }
 
     /**
