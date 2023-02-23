@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +21,18 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('product-category', [ProductCategoryController::class, 'index']);
-Route::post('product-category', [ProductCategoryController::class, 'store']);
+Route::apiResource('product-category', ProductCategoryController::class)
+    ->except('show');
+
+Route::apiResource('product', ProductController::class)
+    ->except('show');
+
+Route::prefix('stock')->group(function () {
+    Route::get('/total/{product_id}', [StockController::class, 'total']);
+    Route::get('/summary/{product_category_id}', [StockController::class, 'summary']);
+    Route::get('/summary/product/{product_id}', [StockController::class, 'summaryByProduct']);
+    Route::get('/{product_id}', [StockController::class, 'index']);
+    Route::post('/', [StockController::class, 'store']);
+    Route::put('/{id}/edit', [StockController::class, 'update']);
+    Route::delete('/{id}', [StockController::class, 'destroy']);
+});
