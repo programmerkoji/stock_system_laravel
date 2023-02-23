@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProductRequest extends FormRequest
+class StockRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,20 +27,18 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('products')->ignore($this->product)],
-            'price' => ['required'],
-            'number' => ['required', Rule::unique('products')->ignore($this->product)],
+            'condition' => 'required',
+            'quantity' => 'max:3',
+            'serial_number' => 'nullable | unique:stocks,serial_number,' . $this->id . ',id',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'カテゴリ名は必須です。',
-            'name.unique' => '同じカテゴリ名は登録できません。',
-            'price.unique' => '金額は必須です。',
-            'number.required' => '製品番号は必須です。',
-            'number.unique' => '同じ製品番号は登録できません。',
+            'condition.required' => '状態の入力は必須です。',
+            'quantity.max' => '最大3つまで登録できます。',
+            'serial_number.unique' => '同じシリアルナンバーは登録できません。',
         ];
     }
 
