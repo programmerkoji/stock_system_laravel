@@ -28,8 +28,8 @@ class StockRequest extends FormRequest
     {
         return [
             'condition' => 'required',
-            // 'serial_number' => 'unique:stocks,serial_number,' . . ',id',
-                'serial_number' => [Rule::unique('stocks')->ignore($this->id)],
+            'quantity' => 'max:3',
+            'serial_number' => 'nullable | unique:stocks,serial_number,' . $this->id . ',id',
         ];
     }
 
@@ -37,6 +37,7 @@ class StockRequest extends FormRequest
     {
         return [
             'condition.required' => '状態の入力は必須です。',
+            'quantity.max' => '最大3つまで登録できます。',
             'serial_number.unique' => '同じシリアルナンバーは登録できません。',
         ];
     }

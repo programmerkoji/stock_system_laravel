@@ -12,6 +12,7 @@ class Stock extends Model
 
     protected $fillable = [
         'product_id',
+        'assign_id',
         'stored_date',
         'shipping_date',
         'condition',
@@ -26,5 +27,13 @@ class Stock extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function assign(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assign_id');
     }
 }

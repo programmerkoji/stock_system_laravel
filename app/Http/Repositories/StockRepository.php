@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\Stock;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -18,11 +19,18 @@ class StockRepository
     protected $stock;
 
     /**
-     * @param Stock
+     * @var Product
      */
-    public function __construct(Stock $stock)
+    protected $product;
+
+    /**
+     * @param Stock
+     * @param Product
+     */
+    public function __construct(Stock $stock, Product $product)
     {
         $this->stock = $stock;
+        $this->product = $product;
     }
 
     /**
@@ -55,7 +63,7 @@ class StockRepository
         }
     }
 
-        /**
+    /**
      * @param $id
      */
     public function findById(int $id)
@@ -79,6 +87,22 @@ class StockRepository
         } catch (\Throwable $th) {
             Log::error($th);
             DB::rollBack();
+        }
+    }
+
+    /**
+     * @param int $id
+     */
+    public function destroy(int $id)
+    {
+        try {
+            DB::beginTransaction();
+            $this->findById($id)
+                ->delete();
+            DB::commit();
+        } catch (\Throwable $th) {
+            Log::error($th);
+            DB::rollback();
         }
     }
 

@@ -29,6 +29,7 @@ class StockService
     public function summary($product_category_id): Collection
     {
         $allProductsData = $this->stockRepository->getProductCategory($product_category_id)->pluck('name', 'id');
+        // dd($allProductsData);
         $stats = collect();
         foreach ($allProductsData as $id => $value) {
             $stat = [];

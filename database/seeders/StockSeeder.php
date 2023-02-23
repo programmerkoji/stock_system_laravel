@@ -18,6 +18,7 @@ class StockSeeder extends Seeder
         DB::table('stocks')->insert([
             [
                 'product_id' => 1,
+                'assign_id' => 1,
                 'stored_date' => "2022-11-30",
                 'shipping_date' => "2022-12-01",
                 'condition' => 3,
@@ -26,6 +27,7 @@ class StockSeeder extends Seeder
             ],
             [
                 'product_id' => 2,
+                'assign_id' => 2,
                 'stored_date' => "2022-10-20",
                 'shipping_date' => "2022-11-25",
                 'condition' => 2,
@@ -34,6 +36,7 @@ class StockSeeder extends Seeder
             ],
             [
                 'product_id' => 1,
+                'assign_id' => 1,
                 'stored_date' => "2022-11-23",
                 'shipping_date' => "2022-12-07",
                 'condition' => 4,
@@ -42,6 +45,7 @@ class StockSeeder extends Seeder
             ],
             [
                 'product_id' => 3,
+                'assign_id' => 3,
                 'stored_date' => "2022-11-30",
                 'shipping_date' => "2022-12-07",
                 'condition' => 1,

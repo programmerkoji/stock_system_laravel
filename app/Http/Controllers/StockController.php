@@ -54,6 +54,14 @@ class StockController extends Controller
     }
 
     /**
+     * @param int $id
+     */
+    public function destroy(int $id)
+    {
+        $this->stockRepository->destroy($id);
+    }
+
+    /**
      * @param
      */
     public function countArrivedAllocation()

@@ -19,6 +19,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('assign_id')
+                ->nullable()
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->date('stored_date')->nullable()->comment('入荷日');
             $table->date('shipping_date')->nullable()->comment('出荷日');
             $table->integer('condition')->comment('状態');

@@ -34,4 +34,5 @@ Route::prefix('stock')->group(function () {
     Route::get('/{product_id}', [StockController::class, 'index']);
     Route::post('/', [StockController::class, 'store']);
     Route::put('/{id}/edit', [StockController::class, 'update']);
+    Route::delete('/{id}', [StockController::class, 'destroy']);
 });
