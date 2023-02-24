@@ -21,6 +21,11 @@ class AuthController extends Controller
         } else {
             return response(['message' => 'ログインできません'], 401);
         }
+    }
 
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response(['message' => 'ログアウトしました。']);
     }
 }
